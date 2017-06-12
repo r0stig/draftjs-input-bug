@@ -8,7 +8,10 @@ class App extends Component {
     this.state = {editorState: EditorState.createEmpty()}
     this.onChange = (editorState) => this.setState({editorState})
     this.handleWindowKeyDown = (event) => {
-      this.references.editor.focus()
+      const activeElem = document.activeElement
+      if (!activeElem.getAttribute('contenteditable')) {
+        this.references.editor.focus()
+      }
     }
   }
 
